@@ -1,0 +1,36 @@
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #8ad4eb;
+}
+
+form{
+    text-align: center;
+    height: 65px;
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    left: 0; 
+    right: 0;
+    margin: auto;
+}
+
+#entrada{
+    font-size: 20px;
+    border: 0px;
+}
+
+#botao{
+    font-size: 16px;
+    height: 30px;
+    width: 120px;
+    margin-top: 10px;
+    border: 0px;
+    background-color: #00000000;
+}
+
+#botao:hover{
+    background-color: #0984aa;
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+}

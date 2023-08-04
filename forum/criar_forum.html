@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="criar-forum.css">
+    <link rel="stylesheet" href="https://md-editor.hau.xyz/dist/md-editor.min.css">
+    <script src="https://md-editor.hau.xyz/dist/md-editor.min.js"></script>
+    <title>Criar forum</title>
+</head>
+<body>
+    <form method="post" action="/adicionar_forum" id="formulario">
+        <input type="text" name="titulo" placeholder="Titulo">
+        <br>
+        <textarea name="texto" placeholder="Texto" id="textarea"></textarea>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        var editor = new mdEditor({
+            autosave: {
+                enabled: true,
+                uniqueId: "ForumId",
+                delay: 1000,
+            },     
+            element: document.getElementById("textarea")
+        })
+
+        document.getElementById("formulario").addEventListener("submit", function(event) {
+            var titulo = document.getElementsByName("titulo")[0].value.trim();
+            if (titulo === "") {
+                alert("Por favor, preencha o campo de título.");
+                event.preventDefault();
+            }
+        })
+    </script>
+</body>
+</html>

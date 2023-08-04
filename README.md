@@ -1,0 +1,2 @@
+## Resumo
+Na minha escola (IFSC campus Palhoça bilingue) tem um grêmio estudantil chamado UFC (união, força e compromisso). Esse grêmio precisava de um site, para poder botar vídeos explicando como usar o SIGAA e MOODLE (sistemas que minha escola usa), e também servisse para fazer foruns. Um amigo, Phillipe, decidiu então fazer esse projeto, e eu o ajudei construindo o sistema node.js e a parte de criação e publicação de forums.
