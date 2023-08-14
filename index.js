@@ -9,12 +9,11 @@ const mongo = require('./mongoose.js')
 
 //Configurações
 app.use(express.static(__dirname + '/css'))
-app.use(express.static(__dirname + '/videos'))
-app.use(express.static(__dirname + '/videos/integrantes'))
+app.use(express.static(__dirname + '/gifs'))
 app.use(express.static(__dirname + '/imagens'))
 app.use(express.static(__dirname + '/imagens/integrantes'))
-app.use(express.static(__dirname + '/java'))
 app.set('view engine', 'ejs')
+app.set('views', __dirname + '/ejs')
 
 app.use(express.urlencoded({
     extended: true
@@ -22,42 +21,53 @@ app.use(express.urlencoded({
 
 //Rotas
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/html/inicio.html')
+    res.sendFile(__dirname + '/paginas/inicio.html')
 })
 
 app.get('/contatos', (req, res) => {
-    res.sendFile(__dirname + '/html/contatos.html')
+    res.sendFile(__dirname + '/paginas/contatos.html')
 })
 
 app.get('/moodle', (req, res) => {
-    res.sendFile(__dirname + '/html/moodle.html')
+    res.sendFile(__dirname + '/paginas/moodle.html')
 })
 
 app.get('/sigaa', (req, res) => {
-    res.sendFile(__dirname + '/html/sigaa.html')
+    res.sendFile(__dirname + '/paginas/sigaa.html')
 })
 
 app.get('/forum', (req, res) => {
-    res.sendFile(__dirname + '/html/forum.html')
+    res.sendFile(__dirname + '/paginas/forum.html')
 })
 
 app.get('/logar_forum', (req, res) => {
-    res.render(__dirname + '/forum/logar_forum.ejs', {alert: false})
+    res.render('logar_forum', {alert: false})
 })
 
 app.post('/criar_forum', (req, res) => {
     const senha_botada = req.body.senha
 
     if(senha_botada === senha){
-        res.sendFile(__dirname + '/forum/criar_forum.html')
+        res.render('criar_forum', {
+            alert: false
+        })
     } else {
-        res.render(__dirname + '/forum/logar_forum.ejs', {alert: true})
+        res.render('logar_forum', {alert: true})
     }
 })
 
-app.post('/adicionar_forum', (req, res) => {
+app.post('/adicionar_forum', async (req, res) => {
     const texto = req.body.texto
     const titulo = req.body.titulo
+    const site = await mongo.getSite(titulo)
+
+    if(site != 'não encontrado'){
+        res.render('criar_forum', {
+            alert: true
+        })
+        return
+    }
+
     mongo.salvarSite(titulo, texto)
     res.redirect(`/forum/${titulo}`)
 })
@@ -67,12 +77,12 @@ app.get('/forum/:site', async (req, res) => {
     const site = await mongo.getSite(site_name)
 
     if(site == 'error' || site == 'não encontrado'){
-        res.render(__dirname + '/forum/forum_criado', {
+        res.render('forum_criado', {
             estado: site,
             titulo: site
         })
     } else {
-        res.render(__dirname + '/forum/forum_criado', {
+        res.render('forum_criado', {
             estado: false,
             texto: site.texto,
             titulo: site.titulo
