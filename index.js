@@ -12,6 +12,7 @@ app.use(express.static(__dirname + '/css'))
 app.use(express.static(__dirname + '/gifs'))
 app.use(express.static(__dirname + '/imagens'))
 app.use(express.static(__dirname + '/imagens/integrantes'))
+app.use(express.static(__dirname + '/js'))
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/ejs')
 

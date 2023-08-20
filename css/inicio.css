@@ -3,164 +3,14 @@
   border: none;
 }
 
-nav {
-  align-items: center;
-  height: 180px;
-  border-bottom: solid #BCEBB6;
-}
-
-nav img {
-  width: 150px;
-  display: flex;
-  top: 40px;
-  left: 12%;
-  position: absolute;
-}
-
-ul {
-  position: absolute;
-  display: flex;
-  justify-items: center;
-  left: 30%;
-  top: 110px;
-  list-style: none;
-  text-decoration: none;
-}
-
-li {
-  list-style: none;
-  text-decoration: none;
-  align-items: center;
-  display: inline-flex;
-
-}
-
-a {
-  color: black;
-  font-size: 30px;
-  list-style: none;
-  text-decoration: none;
-
-}
-
-li a.active {
-  border-bottom: #BCEBB6 solid 5px;
-
-}
-
-li a:hover:not(.active) {
-  border-bottom: none;
-}
-
-nav ul li a {
-  color: #000000;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 8px 15px;
-  border-radius: 5px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
-.user a {
-  display: flex;
-  position: absolute;
-  color: #46AFBF;
-  left: 80%;
-  top: 95px;
-}
-
-
-
-#img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
-  margin-top: 70px
-}
-
-.checkbox {
-  opacity: 0;
-  position: absolute;
-}
-
-
-.label {
-  background-color: #BCEBB6;
-  border-radius: 50px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  left: 73%;
-  top: 110px;
-  padding: 5px;
-  position: relative;
-  height: 26px;
-  width: 50px;
-  transform: scale(1.5);
-
-}
-
-.label .ball {
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  height: 30px;
-  width: 30px;
-  transform: translateX(0px);
-  transition: 0.2s linear;
-}
-
-.checkbox:checked+.label .ball {
-  transform: translateX(24px);
-}
-
-.fa-moon {
-  color: #f1c40f;
-}
-
-.fa-sun {
-  color: #f39c12;
-}
-
-.ids {
-  position: absolute;
-  background-color: #46AFBF;
-  color: #BCEBB6;
-  font-size: 35px;
-  padding: 15px;
-  align-items: center;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  font-size: 40px;
-  border-radius: 45px;
-  box-shadow: 15px;
-  width: 520px;
-  height: 120px;
-  top: 100%;
-  margin-left: 35%;
-  padding: 10px;
-  box-shadow: 5px 10px rgba(0, 0, 0, 0.5);
-}
-
-.ids a {
-  color: #BCEBB6;
-  padding: 30px;
-}
-
 .gremio {
   background-color: #46AFBF;
-  margin-top: 5%;
-  height: 5000px;
-  top: 30%;
+  margin-top: 8%;
 }
 
 h1 {
+  position: relative;
+  top: 10px;
   padding: 15px;
   background-color: #BCEBB6;
   align-items: center;
@@ -169,42 +19,29 @@ h1 {
   justify-content: center;
   font-size: 80px;
   border-radius: 35px;
-  width: 420px;
-  height: 120px;
-  margin-left: 37%;
-  top: 100%;
-  position: absolute;
-}
-
-.sombrinha {
-  position: absolute;
-  background-color: #46AFBF;
-  height: 450px;
-  width: 100%;
-  top: 80%;
+  width: 30vw;
+  height: 20vh;
+  margin-left: 35%;
 }
 
 .integrantes {
   display: grid;
-  gap: 150px;
-  grid-template-columns: auto auto auto;
-  padding: 150px;
-  top: 105%;
-  position: absolute;
-  left: 6.6%;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
 }
 
 .card {
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 260px;
-  padding: 80px;
-  border: solid 5px;
-  margin-left: 5%;
-  top: 40px;
-  position: relative;
+  padding: 20px;
+  border: 5px solid;
+  border-color: #333;
   background-color: #fff;
-  border-radius: 3px;
+  border-radius: 15px;
 }
 
 .card:hover {
@@ -212,22 +49,40 @@ h1 {
 }
 
 .card img {
-  width: 100px;
-  height: auto;
-}
-
-.container {
-  padding: 2px 16px;
-  border: solid #000000;
-
-
+  height: 400px;
+  width: auto;
+  border-radius: 20%;
 }
 
 .text h4 {
-  font-size: 35px;
+  font-size: 20px;
+  margin-top: 10px;
 }
 
+@media only screen and (max-width: 900px) {
+  h1{
+    font-size: 50px;
+    width: 50vw;
+    margin-left: 22.5%;
+  }
+}
 
+@media only screen and (max-width: 600px) {
+  .integrantes {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .card img {
+    height: 300px;
+  }
+
+  h1{
+    width: 70vw;
+    margin-left: 12.5%;
+  }
+}
+
+/*
 @media only screen and (max-width:4564px) {
   * {
     margin: 0;
@@ -1682,4 +1537,4 @@ h1 {
   .text h4 {
     font-size: 35px;
   }
-}
+}*/
