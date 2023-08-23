@@ -25,8 +25,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/paginas/inicio.html')
 })
 
-app.get('/contatos', (req, res) => {
-    res.sendFile(__dirname + '/paginas/contatos.html')
+app.get('/perguntas_frequentes', (req, res) => {
+    res.sendFile(__dirname + '/paginas/perguntas_frequentes.html')
 })
 
 app.get('/moodle', (req, res) => {
