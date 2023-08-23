@@ -9,54 +9,36 @@
 }
 
 h1 {
+  background-color: #fff;
+  box-shadow: 10px 20px rgba(0, 0, 0, 0.5);
   position: relative;
   top: 10px;
   padding: 15px;
-  background-color: #BCEBB6;
   align-items: center;
   display: flex;
   text-align: center;
   justify-content: center;
   font-size: 80px;
   border-radius: 35px;
-  width: 30vw;
+  width: 50vw;
   height: 20vh;
-  margin-left: 35%;
+  margin-left: 24%;
+  margin-bottom: 30px;
 }
 
-.integrantes {
+iframe{
+  width: 560px;
+  height: 315px;
+}
+
+.tutorial {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
   gap: 20px;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
-}
-
-.card {
-  box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  padding: 20px;
-  border: 5px solid;
-  border-color: #333;
-  background-color: #fff;
-  border-radius: 15px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-.card img {
-  height: 400px;
-  width: auto;
-  border-radius: 20%;
-}
-
-.text h4 {
-  font-size: 20px;
-  margin-top: 10px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -68,13 +50,14 @@ h1 {
 }
 
 @media only screen and (max-width: 600px) {
-  .integrantes {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  .tutorial {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 600px));
   }
 
-  .card img {
-    height: 300px;
-  }
+  iframe{
+    width: 90vw;
+    height: calc(315 / 560 * 90vw);
+  }  
 
   h1{
     width: 70vw;
