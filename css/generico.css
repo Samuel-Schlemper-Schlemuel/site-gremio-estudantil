@@ -27,7 +27,7 @@ li {
     display: inline-flex;
 }
 
-nav a, .ids a {
+nav a, #ids a {
     color: black;
     font-size: 28px;
     list-style: none;
@@ -96,6 +96,10 @@ nav ul li a {
     color: #f39c12;
 }
 
+.fa-bars{
+    color: #46AFBF;
+}
+
 #img {
     display: block;
     margin-left: auto;
@@ -104,7 +108,7 @@ nav ul li a {
     margin-top: 3vh;
 }
 
-.ids {
+#ids {
     position: relative;
     background-color: #46AFBF;
     color: #BCEBB6;
@@ -125,14 +129,14 @@ nav ul li a {
     box-shadow: 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.ids a {
+#ids a {
     color: #BCEBB6;
     padding: 30px;
     font-size: 24px;
 }
 
 @media only screen and (min-width: 1440px) {
-    nav a, .ids a {
+    nav a, #ids a {
         font-size: 35px;
     }
 }
@@ -147,24 +151,34 @@ nav ul li a {
         left: 4%;
     }
 
-    select {
+    #guia{
+        font-size: 40px;
+        display: block;
+        background-color: #fff;
+        position: absolute;
+        right: 30px;
+        top: calc(10vh - 30px);
+        z-index: 1;
+        text-align: right;
+        border-radius: 10px;
+    }
+
+    #guia a{
         font-size: 20px;
-        appearance: none;
-        text-align: center;
+    }
+
+    .fa-bars {
         padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: white;
-        position: relative;
-        width: 27vw;
-        left: calc((100vw - 18vh - 40px) / 2 + 18vh - 18vw);
     }
 
     .label {
-        top: calc(9vh - 11px);
+        position: relative;
+        top: -25px;
+        right: -60px;
         padding: 3px;
         height: 22px;
         width: 40px;
+        font-size: 18px;
     }
 
     .label .ball {
@@ -174,12 +188,18 @@ nav ul li a {
         width: 22px;
     }
 
-    .ids {
+    #ids {
         margin-left: 1.5vw;
         margin-bottom: 15vh;
     }
 
-    .ids a {
+    #ids a {
         font-size: 18px;
+    }
+
+    ul {
+        left: 0px;
+        text-align: left;
+        width: auto;
     }
 }
