@@ -20,7 +20,7 @@ function ajustarData() {
             <li><a href="/" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Inicio</a></li>
             <li><a href="/sigaa" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Sigaa</a></li>
             <li><a href="/moodle" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Moodle</a></li>
-            <li><a href="/forum" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Forum</a></li>
+            <li><a href="/forum" class="active" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Forum</a></li>
         </ul>
 
         <div>
@@ -38,6 +38,36 @@ function ajustarData() {
             chk = 'claro'
             chkId.click()
         }
+    }
+}
+
+function working(foruns){
+    let div = document.getElementById('foruns')
+
+    if(foruns == 'não existem foruns'){
+        div.innerHTML = `
+            <div class="forum">
+                <h2>Não existem foruns</h2>
+            </div>
+        `
+
+        return
+    }
+
+    const object = JSON.parse(foruns)
+
+    for(i in object.titulos){
+        const data = new Date(object.datas[i])
+        const dataString = `${data.getDate()}/${data.getMonth()}/${data.getFullYear()}`
+
+        div.innerHTML += `
+            <div class="forum">
+                <a href="/forum/${object.titulos[i]}">
+                    <h2>${object.titulos[i]}</h2>
+                </a>
+                <p>${dataString}</p>
+            </div>
+        `
     }
 }
 
@@ -61,7 +91,7 @@ function abrir(){
             <li><a href="/" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Inicio</a></li><br>
             <li><a href="/sigaa" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Sigaa</a></li><br>
             <li><a href="/moodle" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Moodle</a></li><br>
-            <li><a href="/forum" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Forum</a></li>
+            <li><a href="/forum" class="active" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Forum</a></li>
         </ul>
     
         <div>

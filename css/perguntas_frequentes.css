@@ -3,7 +3,7 @@
   border: none;
 }
 
-.gremio {
+#bloco {
   background-color: #46AFBF;
   margin-top: 8%;
 }
@@ -26,13 +26,22 @@ h1 {
   margin-bottom: 30px;
 }
 
+#perguntas{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80%, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
 .pergunta {
   background-color: #F5F5F5;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 80%;
-  margin: 50px auto 0px auto;
+  margin: 0px auto;
 }
 
 .pergunta h2 {

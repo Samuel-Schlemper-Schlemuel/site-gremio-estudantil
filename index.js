@@ -37,8 +37,30 @@ app.get('/sigaa', (req, res) => {
     res.sendFile(__dirname + '/paginas/sigaa.html')
 })
 
-app.get('/forum', (req, res) => {
-    res.sendFile(__dirname + '/paginas/forum.html')
+app.get('/forum', async (req, res) => {
+    let foruns = await mongo.getRecentSites()
+
+    if(foruns === 'não existem foruns'){
+        res.render('forum', {
+            foruns: foruns
+        })
+
+        return
+    }
+
+    let titulos = []
+    let datas = []
+
+    for(i in foruns){
+        titulos.push(foruns[i].titulo)
+        datas.push(foruns[i].data)
+    }
+
+    let object = JSON.stringify({titulos: titulos, datas: datas})
+
+    res.render('forum', {
+        foruns: object
+    })
 })
 
 app.get('/logar_forum', (req, res) => {
