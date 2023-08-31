@@ -4,7 +4,6 @@ require('dotenv').config()
 const express = require('express')
 const PORT = process.env.PORT || 3000
 const app = express()
-const senha = process.env.senha
 const mongo = require('./mongoose.js')
 
 //Configurações
@@ -70,7 +69,7 @@ app.get('/logar_forum', (req, res) => {
 app.post('/criar_forum', (req, res) => {
     const senha_botada = req.body.senha
 
-    if(senha_botada === senha){
+    if(senha_botada === process.env.senha){
         res.render('criar_forum', {
             alert: false
         })

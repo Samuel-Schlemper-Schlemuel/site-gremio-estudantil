@@ -3,7 +3,7 @@ var aberto = false
 
 function ajustarData() {
     const guia = document.getElementById('guia')
-    const larguraTela = window.outerWidth
+    const larguraTela = window.innerWidth
 
     if (larguraTela <= 600) {
         guia.innerHTML = `
@@ -74,11 +74,13 @@ function abrir(){
         </div>
         `
 
+        let chkId = document.getElementById('chk')
+
         if(chk == 'escuro'){
             chk = 'claro'
-            claro_escuro()
+            chkId.click()
         }
-
+        
         aberto = true
     }
 }
