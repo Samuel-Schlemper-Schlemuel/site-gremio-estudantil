@@ -1,9 +1,23 @@
 var chk = localStorage.getItem('chk') || "claro"
 var aberto = false
 
+
 function ajustarData() {
-    const guia = document.getElementById('guia')
+    const imagens = document.getElementsByTagName('img')
+    const guia = document.getElementsByClassName('guia')[0]
     const larguraTela = window.innerWidth
+
+    for(img in imagens){
+        let larguraImagem = imagens[img].naturalWidth
+
+        if(img == 0 || !Number.parseInt(img)){
+            continue
+        } else if (larguraImagem > larguraTela - larguraTela / 100 * 18) {
+            imagens[img].style.width = `100%`
+        } else {
+            imagens[img].removeAttribute('style')
+        }
+    }
 
     if (larguraTela <= 600) {
         guia.innerHTML = `
@@ -14,10 +28,19 @@ function ajustarData() {
             chk = 'claro'
             claro_escuro()
         }
+
+        if(aberto){
+            aberto = false
+            abrir()
+        }
     } else if (larguraTela > 600) {
+        if(aberto){
+            abrir()
+        }
+
         guia.innerHTML = `
         <ul>
-            <li><a href="/" class="active" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Inicio</a></li>
+            <li><a href="/" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Inicio</a></li>
             <li><a href="/sigaa" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Sigaa</a></li>
             <li><a href="/moodle" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Moodle</a></li>
             <li><a href="/forum" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Forum</a></li>
@@ -42,10 +65,14 @@ function ajustarData() {
 }
 
 function abrir(){
+    const guia = document.getElementsByClassName('guia')[0]
+
     if(aberto){
         guia.innerHTML = `
             <i class="fa fa-bars" onclick="abrir()"></i>
         `
+
+        guia.style.height = "auto"
         
         if(chk == 'escuro'){
             chk = 'claro'
@@ -58,7 +85,7 @@ function abrir(){
         <i class="fa fa-bars fa-rotate-90" onclick="abrir()"></i>
     
         <ul>
-            <li><a href="/" class="active" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Inicio</a></li><br>
+            <li><a href="/" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Inicio</a></li><br>
             <li><a href="/sigaa" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Sigaa</a></li><br>
             <li><a href="/moodle" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Moodle</a></li><br>
             <li><a href="/forum" ${chk == 'escuro' ? 'style="color: #fff;"': ''}>Forum</a></li>
@@ -73,6 +100,8 @@ function abrir(){
             </label>
         </div>
         `
+
+        guia.style.height = "360px"
 
         let chkId = document.getElementById('chk')
 
@@ -89,14 +118,12 @@ function claro_escuro() {
     const body = document.body
     const nav = document.getElementsByTagName('nav')[0]
     const imgs = document.getElementsByTagName('img')
-    const ids = document.getElementById('ids')
-    const bloco = document.getElementById('bloco')
+    const bloco = document.getElementsByClassName('bloco')[0]
     const bars = document.getElementsByClassName('fa-bars')[0]
-    const guia = document.getElementById('guia')
+    const guia = document.getElementsByClassName('guia')[0]
 
     if(chk == 'claro'){
         body.style.background = '#1B1B32'
-        ids.style.background = '#038296'
         bloco.style.background = '#038296'
         guia.style.backgroundColor = '#1B1B32'
 
@@ -121,7 +148,6 @@ function claro_escuro() {
         localStorage.setItem('chk', 'escuro')
     } else {
         body.style.background = '#fff'
-        ids.style.background = '#46afbf'
         bloco.style.background = '#46afbf'
         guia.style.backgroundColor = '#fff'
 
@@ -147,5 +173,10 @@ function claro_escuro() {
     }
 }
 
-ajustarData()
+function ajustarDataDobro(){
+    ajustarData()
+    ajustarData()
+}
+
+window.addEventListener('load', ajustarDataDobro)
 window.addEventListener('resize', ajustarData)
