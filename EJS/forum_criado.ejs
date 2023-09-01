@@ -52,7 +52,9 @@
         <script src="/forum_criado.js"></script>
         <script>
             var texto = `<%= texto%>`
-            texto = texto.replace(/&gt;/g, '\n>')
+            texto = texto.replace(/&gt;/g, '>')
+            texto = texto.replace(/&lt;/g, '<')
+            texto = texto.replace(/&#34;/g, '"')
 
             document.getElementsByClassName('bloco')[0].innerHTML = marked(texto)
         </script>

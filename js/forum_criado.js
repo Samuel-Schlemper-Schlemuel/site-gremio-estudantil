@@ -119,17 +119,27 @@ function claro_escuro() {
     const nav = document.getElementsByTagName('nav')[0]
     const imgs = document.getElementsByTagName('img')
     const bloco = document.getElementsByClassName('bloco')[0]
+    const aBloco = bloco.getElementsByTagName('a')
+    const titulo = document.getElementsByClassName('titulo')[0]
     const bars = document.getElementsByClassName('fa-bars')[0]
     const guia = document.getElementsByClassName('guia')[0]
+    const width = window.innerWidth
 
     if(chk == 'claro'){
         body.style.background = '#1B1B32'
-        bloco.style.background = '#038296'
+        bloco.style.color = '#fff'
+        titulo.style.color = '#fff'
         guia.style.backgroundColor = '#1B1B32'
+
+        if(width <= 600){
+            bloco.style.boxShadow = '10px 10px #038296, -10px -10px #038296'
+        } else {
+            bloco.style.boxShadow = '20px 20px #038296, -20px -20px #038296'
+        }
 
         if(bars != null){
             bars.style.color = '#038296'
-        }
+        }   
 
         let asNav = nav.getElementsByTagName('a')
 
@@ -139,17 +149,32 @@ function claro_escuro() {
             }
         }
 
-        for(let i = 0; i <= 1; i++){
-            imgs[i].style.backgroundColor = '#e1e1e1'
-            imgs[i].style.borderRadius = '10px'
+        for(i in imgs){
+            if(typeof imgs[i] == 'object'){
+                imgs[i].style.backgroundColor = '#e1e1e1'
+                imgs[i].style.borderRadius = '10px'
+            }
+        }
+
+        for(i in aBloco){
+            if(typeof aBloco[i] == 'object'){
+                aBloco[i].style.color = '#fff'
+            }
         }
 
         chk = 'escuro'
         localStorage.setItem('chk', 'escuro')
     } else {
         body.style.background = '#fff'
-        bloco.style.background = '#46afbf'
+        bloco.style.color = '#000'
+        titulo.style.color = '#000'
         guia.style.backgroundColor = '#fff'
+        
+        if(width <= 600){
+            bloco.style.boxShadow = '10px 10px #46afbf, -10px -10px #46afbf'
+        } else {
+            bloco.style.boxShadow = '20px 20px #46afbf, -20px -20px #46afbf'
+        }
 
         if(bars != null){
             bars.style.color = '#46afbf'
@@ -163,14 +188,23 @@ function claro_escuro() {
             }
         }
 
-        for(let i = 0; i <= 1; i++){
-            imgs[i].style.backgroundColor = ''
-            imgs[i].style.borderRadius = ''
+        for(i in imgs){
+            if(typeof imgs[i] == 'object'){
+                imgs[i].style.backgroundColor = '#fff'
+                imgs[i].style.borderRadius = '10px'
+            }
+        }
+
+        for(i in aBloco){
+            if(typeof aBloco[i] == 'object'){
+                aBloco[i].style.color = '#551aa5'
+            }
         }
 
         chk = 'claro'
         localStorage.setItem('chk', 'claro')
     }
+
 }
 
 function ajustarDataDobro(){
@@ -178,5 +212,6 @@ function ajustarDataDobro(){
     ajustarData()
 }
 
+ajustarData()
 window.addEventListener('load', ajustarDataDobro)
 window.addEventListener('resize', ajustarData)
