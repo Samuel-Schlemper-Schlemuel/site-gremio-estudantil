@@ -1,6 +1,6 @@
 {
     "name": "forum-ajuda_sigaa_e_moodle",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Um site feito para um grêmio estudantil ajudar os alunos a usar o sistema da escola e postar as novidades",
     "main": "index.js",
     "engines": {
